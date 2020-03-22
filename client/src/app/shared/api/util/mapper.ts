@@ -10,9 +10,9 @@ export class MapService {
     return {
       result: response.result,
       description: response.description,
-      winnerBet: {
-        picture: response.winnerBet.picture,
-        name: response.winnerBet.name
+      winner_bet: {
+        photo_url: response.winner_bet.photo_url,
+        name: response.winner_bet.name
       }
     };
   }

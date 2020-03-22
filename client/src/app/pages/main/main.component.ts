@@ -27,8 +27,8 @@ export class MainComponent implements OnInit {
               private waitingComponent:WaitingComponent,
               private resultComponent:ResultComponent,
               private statisticsComponent: StatisticsComponent) {
-    this.apiService.get(`bet`, this.mapService.simpleResponse).subscribe((data) => {
-      this.allBets$.next(data.valueOf().data);
+    this.apiService.get(`bets.json`, this.mapService.simpleResponse).subscribe((data) => {
+      this.allBets$.next(data.valueOf());
     },(error) => {
       console.error(error);
     });
@@ -40,7 +40,12 @@ export class MainComponent implements OnInit {
   onSelectBet(content: any, loader:any, bet:Bet): void {
     this.userChoice = bet;
     this.waitingComponent.openVerticallyCentered(loader);
-    this.apiService.get(`bet/${bet.name}`, this.mapService.mapResponse).subscribe((data) => {
+    var body = {
+      game: {
+        user_choice: bet.name
+      }
+    }
+    this.apiService.post(`/games.json`, body, this.mapService.mapResponse).subscribe((data) => {
      this.waitingComponent.dismiss();
      this.curbResponse$.next(data);
      this.resultComponent.openVerticallyCentered(content);
@@ -50,8 +55,8 @@ export class MainComponent implements OnInit {
   }
 
   onStatistics(content: any):void{
-    this.apiService.get(`statistics`, this.mapService.simpleResponse).subscribe((data) => {
-      this.statResponse$.next(data.valueOf().data);
+    this.apiService.get(`/games.json`, this.mapService.simpleResponse).subscribe((data) => {
+      this.statResponse$.next(data.valueOf());
       this.statisticsComponent.openVerticallyCentered(content);
     },(error) => {
       console.error(error);

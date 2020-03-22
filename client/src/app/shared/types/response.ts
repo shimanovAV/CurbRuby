@@ -1,17 +1,17 @@
 export class CurbResponse {
   result: string;
   description: string;
-  winnerBet: Bet;
+  winner_bet: Bet;
 }
 
 export class Bet {
-  picture: string;
+  photo_url: string;
   name: string;
 }
 
 export class GameStatistics {
   id: number;
-  userChoice: string;
-  curbChoice: string;
+  user_choice: string;
+  curb_choice: string;
   winner: string;
 }
