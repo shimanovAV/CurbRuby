@@ -5,5 +5,6 @@ class BetsController < ApplicationController
   # GET /bets.json
   def index
     @bets = Bet.all
+    render json: @bets
   end
 end

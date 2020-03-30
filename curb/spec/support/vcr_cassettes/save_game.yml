@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://private-anon-cd340719de-curbrockpaperscissors.apiary-proxy.com/rps-stage/throw
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (mingw32 x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - private-anon-cd340719de-curbrockpaperscissors.apiary-proxy.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '37'
+      X-Apiary-Ratelimit-Limit:
+      - '120'
+      X-Apiary-Ratelimit-Remaining:
+      - '118'
+      X-Apiary-Transaction-Id:
+      - 5e8239f9f08afa008e6c9ea0
+      X-Amzn-Requestid:
+      - '0139e046-d7c4-48d3-9a8e-617ec6e98e4d'
+      X-Amz-Apigw-Id:
+      - KN3_CGCkoAMFkYA=
+      X-Amzn-Trace-Id:
+      - Root=1-5e8239f9-8276b14a849a5b2a945d3b86;Sampled=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,HEAD,POST,PUT,DELETE,TRACE,CONNECT
+      Access-Control-Max-Age:
+      - '10'
+      Date:
+      - Mon, 30 Mar 2020 18:27:05 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"statusCode":200,"body":"\"paper\""}'
+    http_version: null
+  recorded_at: Mon, 30 Mar 2020 18:27:06 GMT
+recorded_with: VCR 5.1.0

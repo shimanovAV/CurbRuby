@@ -2,13 +2,14 @@
 
 require 'rubygems' if RUBY_VERSION < '1.9'
 require 'rest_client'
+require 'game_result'
 
 class Game < ApplicationRecord
   validates :user_choice, presence: true
 
   def set_curb_choice
-    get_server_response
-    self.curb_choice = chosen_bet_by_curb || generate_your_choice
+    response = get_server_response
+    self.curb_choice = chosen_bet_by_curb(response) || generate_your_choice
   end
 
   def find_winner
@@ -36,11 +37,11 @@ class Game < ApplicationRecord
 
   def get_server_response
     response = RestClient.get CURB_SERVER_URL
-    @server_response = JSON.parse response.body
+    JSON.parse response.body
   end
 
-  def chosen_bet_by_curb
-    response_body = @server_response[BODY]
+  def chosen_bet_by_curb(response)
+    response_body = response[BODY]
     if !!response_body
       response_body.gsub!(/\"/, '')
       BETS[response_body.to_sym]
